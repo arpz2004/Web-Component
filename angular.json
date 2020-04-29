@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -40,15 +40,15 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "plugin": "~buildplugin.js",
+              "extraWebpackConfig": "webpack.extra.js",
               "budgets": [
                 {
                   "type": "initial",
@@ -90,7 +90,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/src/native-shim.js",
+              "node_modules/@webcomponents/shadydom/shadydom.min.js"
+            ]
           }
         },
         "lint": {

@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod --output-hashing=none",
+    "postinstall": "ngcc",
+    "start": "ng serve --open",
+    "build": "ng build --prod --output-hashing=none --base-href=/web-components/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build:esm": "gulp inline-templates"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,11 @@
     "@webcomponents/custom-elements": "^1.4.1",
     "@webcomponents/shadydom": "^1.7.3",
     "@webcomponents/webcomponentsjs": "^2.4.3",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^3.6.5",
+    "custom-event-polyfill": "^1.0.7",
+    "elements-zone-strategy": "^9.0.0",
+    "events-polyfill": "^2.1.2",
     "rxjs": "~6.5.5",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.2"

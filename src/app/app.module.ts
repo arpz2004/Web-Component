@@ -2,6 +2,7 @@ import { Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { ElementZoneStrategyFactory } from 'elements-zone-strategy';
 
 
 @NgModule({
@@ -11,14 +12,14 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
-  entryComponents: [AppComponent]
+  providers: []
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const customElement = createCustomElement(AppComponent, { injector });
+    const strategyFactory = new ElementZoneStrategyFactory(AppComponent, this.injector);
+    const customElement = createCustomElement(AppComponent, { injector: this.injector, strategyFactory });
     customElements.define('test-element', customElement);
   }
 
-  ngDoBootstrap() {}
- }
+  ngDoBootstrap() { }
+}
